@@ -1,0 +1,33 @@
+# Bazel
+bazel-*
+*.bazelrc.user
+*.bazelproject
+*.bazelversion
+.bazelbuild/
+.bazelci/
+.bazeloutput/
+.bazelrc
+bazel-bin/
+bazel-out/
+bazel-testlogs/
+bazel-genfiles/
+.eclipse
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+replay_pid*
+
+# Maven (in case any Maven files are generated)
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties

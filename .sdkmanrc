@@ -1,0 +1,3 @@
+# To install this version (first time only): `sdk env install`
+# To use this version: `sdk env`
+java=17.0.13-amzn

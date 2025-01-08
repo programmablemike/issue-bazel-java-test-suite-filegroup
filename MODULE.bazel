@@ -1,0 +1,28 @@
+"""
+Top-level Bazel module
+"""
+module(
+    name = "issue-bazel-java-test-suite-filegroup",
+    version = "1.0"
+)
+
+# Dependencies
+bazel_dep(name = "rules_java", version = "7.12.2")
+bazel_dep(name = "rules_jvm_external", version = "6.5")
+bazel_dep(name = "contrib_rules_jvm", version = "0.27.0")
+
+# Java rules
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "org.junit.jupiter:junit-jupiter-api:5.11.3",
+        "org.junit.jupiter:junit-jupiter:5.11.3",
+        "org.junit.platform:junit-platform-launcher:1.11.3",
+        "org.junit.platform:junit-platform-reporting:1.11.3",
+        "org.junit.platform:junit-platform-suite-api:1.11.3",
+    ],
+    repositories = [
+        "https://repo1.maven.org/maven2",
+    ]
+)
+use_repo(maven, "maven")
