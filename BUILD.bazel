@@ -23,19 +23,20 @@ java_library(
     deps = [":lib"],
 )
 
-java_test_suite(
-    name = "tests_glob",
-    srcs = glob(["src/test/java/**/*.java"]),
-    runner = "junit5",
-    deps = [
-        ":lib",
-        "@maven//:org_junit_jupiter_junit_jupiter",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-        "@maven//:org_junit_platform_junit_platform_launcher",
-        "@maven//:org_junit_platform_junit_platform_reporting",
-        "@maven//:org_junit_platform_junit_platform_suite_api",
-    ],
-)
+# NOTE(mike): Uncommenting this will cause *both* test cases to pass which is a strange phenomenon.
+#java_test_suite(
+#    name = "tests_glob",
+#    srcs = glob(["src/test/java/**/*.java"]),
+#    runner = "junit5",
+#    deps = [
+#        ":lib",
+#        "@maven//:org_junit_jupiter_junit_jupiter",
+#        "@maven//:org_junit_jupiter_junit_jupiter_api",
+#        "@maven//:org_junit_platform_junit_platform_launcher",
+#        "@maven//:org_junit_platform_junit_platform_reporting",
+#        "@maven//:org_junit_platform_junit_platform_suite_api",
+#    ],
+#)
 
 java_test_suite(
     name = "tests_filegroup",
