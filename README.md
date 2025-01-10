@@ -14,9 +14,9 @@ There is a weird situation that occurred during the original creation of this ex
 To see the sources not found behavior you can run the following command:
 
 ```shell
-$: bazel test //:tests_filegroup
+$: bazel test //:tests_filegroup --nocache_test_results
 INFO: Found 0 test targets...
-INFO: Elapsed time: 0.152s, Critical Path: 0.00s
+INFO: Elapsed time: 0.071s, Critical Path: 0.00s
 INFO: 1 process: 1 internal.
 INFO: Build completed successfully, 1 total action
 ERROR: No test targets were found, yet testing was requested
@@ -28,21 +28,12 @@ To see the sources found if there's a second test suite using `glob()` behavior 
 ####
 # Run the glob() specified java_test_suite
 ####
-$: bazel test //:tests_glob
-INFO: Analyzed 2 targets (123 packages loaded, 5887 targets configured).
-INFO: Multiplexer process for Javac has closed its output stream
-INFO: From Building external/contrib_rules_jvm~/java/src/com/github/bazel_contrib/contrib_rules_jvm/junit5/liballow.jar (1 source file):
-warning: [options] source value 8 is obsolete and will be removed in a future release
-warning: [options] target value 8 is obsolete and will be removed in a future release
-warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
-INFO: From Building external/contrib_rules_jvm~/java/src/com/github/bazel_contrib/contrib_rules_jvm/junit5/libjunit5-compile-class.jar (19 source files):
-warning: [options] source value 8 is obsolete and will be removed in a future release
-warning: [options] target value 8 is obsolete and will be removed in a future release
-warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+$: bazel test //:tests_glob --nocache_test_results
+INFO: Analyzed 2 targets (0 packages loaded, 7 targets configured).
 INFO: Found 2 test targets...
-INFO: Elapsed time: 9.893s, Critical Path: 8.61s
-INFO: 63 processes: 4 internal, 50 darwin-sandbox, 9 worker.
-INFO: Build completed successfully, 63 total actions
+INFO: Elapsed time: 0.425s, Critical Path: 0.31s
+INFO: 3 processes: 1 internal, 2 darwin-sandbox.
+INFO: Build completed successfully, 3 total actions
 //:src/test/java/com/example/foo/FirstTest                               PASSED in 0.3s
 //:src/test/java/com/example/foo/SecondTest                              PASSED in 0.3s
 
@@ -52,22 +43,14 @@ There were tests whose specified size is too big. Use the --test_verbose_timeout
 ####
 # Run the filegroup specified java_test_suite. This should work now.
 ####
-❯ bazel test //:tests_filegroup
-INFO: Analyzed 2 targets (123 packages loaded, 5887 targets configured).
-INFO: From Building external/contrib_rules_jvm~/java/src/com/github/bazel_contrib/contrib_rules_jvm/junit5/liballow.jar (1 source file):
-warning: [options] source value 8 is obsolete and will be removed in a future release
-warning: [options] target value 8 is obsolete and will be removed in a future release
-warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
-INFO: From Building external/contrib_rules_jvm~/java/src/com/github/bazel_contrib/contrib_rules_jvm/junit5/libjunit5-compile-class.jar (19 source files):
-warning: [options] source value 8 is obsolete and will be removed in a future release
-warning: [options] target value 8 is obsolete and will be removed in a future release
-warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+$: bazel test //:tests_filegroup --nocache_test_results
+INFO: Analyzed 2 targets (0 packages loaded, 0 targets configured).
 INFO: Found 2 test targets...
-INFO: Elapsed time: 5.420s, Critical Path: 4.77s
-INFO: 81 processes: 13 internal, 59 darwin-sandbox, 9 worker.
-INFO: Build completed successfully, 81 total actions
-//:src/test/java/com/example/foo/FirstTest                               PASSED in 0.5s
-//:src/test/java/com/example/foo/SecondTest                              PASSED in 0.6s
+INFO: Elapsed time: 0.376s, Critical Path: 0.30s
+INFO: 3 processes: 1 internal, 2 darwin-sandbox.
+INFO: Build completed successfully, 3 total actions
+//:src/test/java/com/example/foo/FirstTest                               PASSED in 0.3s
+//:src/test/java/com/example/foo/SecondTest                              PASSED in 0.3s
 
 Executed 2 out of 2 tests: 2 tests pass.
 There were tests whose specified size is too big. Use the --test_verbose_timeout_warnings command line option to see which ones these are.
