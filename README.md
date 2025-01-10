@@ -1,7 +1,7 @@
 # issue-bazel-java-test-suite-filegroup
 
 This is an example Bazel project to demonstrate a test suffix searching issue
-between Bazel and the `bazel-contrib/rules_jvm` package.
+in the `bazel-contrib/rules_jvm` package.
 
 This issue was filed against the `bazel-contrib/rules_jvm` repository [here](https://github.com/bazel-contrib/rules_jvm/issues/316).
 
