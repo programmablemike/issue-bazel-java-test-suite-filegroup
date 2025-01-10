@@ -1,7 +1,5 @@
 package com.example.foo;
 
-import java.beans.Transient;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
